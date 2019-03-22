@@ -1,8 +1,8 @@
-package org.foo.service;
+package org.foo.core.service;
 
-import org.foo.exception.AccountNotFoundException;
-import org.foo.model.Transaction;
-import org.foo.model.TransactionStatus;
+import org.foo.core.exception.AccountNotFoundException;
+import org.foo.core.model.Transaction;
+import org.foo.core.model.TransactionStatus;
 
 /**
  * Transaction service

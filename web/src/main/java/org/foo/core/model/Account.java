@@ -1,18 +1,15 @@
-package org.foo.model;
+package org.foo.core.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Bank account
  *
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
-@Entity(name="accounts")
+@Entity
+@Table(name="accounts")
 public class Account implements Serializable {
 
 	@Id

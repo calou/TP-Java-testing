@@ -1,10 +1,10 @@
-package org.foo.service;
+package org.foo.core.service;
 
-import org.foo.exception.AccountNotFoundException;
-import org.foo.model.Authorization;
-import org.foo.model.Transaction;
-import org.foo.model.TransactionStatus;
-import org.foo.repository.TransactionRepository;
+import org.foo.core.exception.AccountNotFoundException;
+import org.foo.core.model.Authorization;
+import org.foo.core.model.Transaction;
+import org.foo.core.model.TransactionStatus;
+import org.foo.core.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

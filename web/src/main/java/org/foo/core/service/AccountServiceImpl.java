@@ -1,8 +1,9 @@
-package org.foo.service;
+package org.foo.core.service;
 
-import org.foo.exception.AccountNotFoundException;
-import org.foo.model.Account;
-import org.foo.repository.AccountRepository;
+import org.foo.core.exception.AccountNotFoundException;
+import org.foo.core.model.Account;
+import org.foo.core.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 
+	@Autowired
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}

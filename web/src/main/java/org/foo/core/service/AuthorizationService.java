@@ -1,6 +1,6 @@
-package org.foo.service;
+package org.foo.core.service;
 
-import org.foo.model.Authorization;
+import org.foo.core.model.Authorization;
 
 /**
  * Transaction authorization service

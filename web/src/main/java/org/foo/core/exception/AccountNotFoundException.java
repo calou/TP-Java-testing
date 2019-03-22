@@ -1,4 +1,4 @@
-package org.foo.exception;
+package org.foo.core.exception;
 
 /**
  * Exception thrown when no account is found

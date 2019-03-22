@@ -1,8 +1,6 @@
-package org.foo.model;
+package org.foo.core.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -10,6 +8,8 @@ import java.util.Date;
  *
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
+@Entity
+@Table(name="transactions")
 public class Transaction {
 
 	@Id
@@ -26,6 +26,7 @@ public class Transaction {
 	private double amount;
 
 	@Column(name="date")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 
 	public Long getId() {

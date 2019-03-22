@@ -1,8 +1,9 @@
-package org.foo.service;
+package org.foo.core.service;
 
-import org.foo.exception.AccountNotFoundException;
-import org.foo.model.Account;
-import org.foo.model.Authorization;
+import org.foo.core.exception.AccountNotFoundException;
+import org.foo.core.model.Account;
+import org.foo.core.model.Authorization;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class AuthorizationServiceImpl implements AuthorizationService {
 	private AccountService accountService;
 
+	@Autowired
 	public AuthorizationServiceImpl(AccountService accountService) {
 		this.accountService = accountService;
 	}

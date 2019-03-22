@@ -1,7 +1,7 @@
-package org.foo.service;
+package org.foo.core.service;
 
-import org.foo.exception.AccountNotFoundException;
-import org.foo.model.Account;
+import org.foo.core.exception.AccountNotFoundException;
+import org.foo.core.model.Account;
 
 /**
  * Service for managing {@link Account}

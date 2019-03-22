@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>core</module>
         <module>web</module>
     </modules>
 
@@ -26,6 +25,11 @@
                 <version>${spring-boot.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.193</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

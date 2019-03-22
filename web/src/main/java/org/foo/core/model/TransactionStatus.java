@@ -1,4 +1,4 @@
-package org.foo.model;
+package org.foo.core.model;
 
 /**
  * Todo
