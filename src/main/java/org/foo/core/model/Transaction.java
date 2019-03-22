@@ -29,6 +29,9 @@ public class Transaction {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
+	@Column(name="category")
+	private TransactionCategory category;
+
 	public Long getId() {
 		return id;
 	}
@@ -67,5 +70,13 @@ public class Transaction {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public TransactionCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(TransactionCategory category) {
+		this.category = category;
 	}
 }
