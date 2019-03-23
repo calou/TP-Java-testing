@@ -11,40 +11,80 @@
 <body ng-controller="AccountController">
 <div class="container-fluid">
 	<h1>Ma super banque</h1>
-	<h2>Liste des comptes</h2>
-	<table>
-		<thead>
-		<tr>
-			<th>Identifiant de compte</th>
-			<th>Montant</th>
-			<th>Découvert autorisé</th>
-			<th>Découvert maximum</th>
-		</tr>
-		</thead>
-
-		<tbody>
-		<tr ng-repeat="account in accounts">
-			<td>{{account.account_id}}</td>
-			<td>{{account.balance}}</td>
-			<td>{{account.overdraft}}</td>
-			<td>{{account.max_overdraft}}</td>
-		</tr>
-		</tbody>
-	</table>
 	<div class="shadow p-3 mb-5 bg-white rounded">
-		<h2>Création de comptes</h2>
+		<h2>Liste des comptes</h2>
+		<table>
+			<thead>
+			<tr>
+				<th>Identifiant de compte</th>
+				<th>Montant</th>
+				<th>Découvert autorisé</th>
+				<th>Découvert maximum</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="account in accounts">
+				<td>{{account.account_id}}</td>
+				<td>{{account.balance}}</td>
+				<td>{{account.overdraft}}</td>
+				<td>{{account.max_overdraft}}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="shadow p-3 mb-5 bg-white rounded">
+		<h2>Création de compte</h2>
 		<form>
 			<div class="row">
 				<div class="form-group col-sm">
 					<label>Identifiant de compte</label>
-					<input type="text" name="account_id" value="" class="form-control" ng-model="createAccountRequest.account_id"/>
+					<input type="text" name="account_id" value="" class="form-control"
+					       ng-model="createAccountRequest.account_id"/>
 				</div>
 				<div class="form-group col-sm">
 					<label>Montant</label>
-					<input type="text" name="balance" value="" class="form-control" ng-model="createAccountRequest.balance"/>
+					<input type="text" name="balance" value="" class="form-control"
+					       ng-model="createAccountRequest.balance"/>
 				</div>
 				<div class="col-sm">
-					<button type="submit" class="btn btn-primary" ng-click="create(createAccountRequest.account_id, createAccountRequest.balance)">Enregistrer</button>
+					<button type="submit" class="btn btn-primary"
+					        ng-click="createAccount(createAccountRequest.account_id, createAccountRequest.balance)">
+						Enregistrer
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="shadow p-3 mb-5 bg-white rounded">
+		<h2>Création de transaction</h2>
+		<form>
+			<div class="row">
+				<div class="form-group col-sm">
+					<label>Débiteur</label>
+					<input type="text" name="debitor" value="" class="form-control"
+					       ng-model="createTransactionRequest.debitor"/>
+				</div>
+				<div class="form-group col-sm">
+					<label>Créditeur</label>
+					<input type="text" name="debitor" value="" class="form-control"
+					       ng-model="createTransactionRequest.creditor"/>
+				</div>
+				<div class="form-group col-sm">
+					<label>Catégorie</label>
+					<input type="text" name="debitor" value="" class="form-control"
+					       ng-model="createTransactionRequest.category"/>
+				</div>
+				<div class="form-group col-sm">
+					<label>Montant</label>
+					<input type="text" name="debitor" value="" class="form-control"
+					       ng-model="createTransactionRequest.amount"/>
+				</div>
+				<div class="col-sm">
+					<button type="submit" class="btn btn-primary"
+					        ng-click="createTransaction(createTransactionRequest.debitor, createTransactionRequest.creditor, createTransactionRequest.category, createTransactionRequest.amount)">
+						Enregistrer
+					</button>
 				</div>
 			</div>
 		</form>
