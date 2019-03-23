@@ -7,19 +7,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+
+	<link rel="stylesheet" href="app.css"/>
 </head>
 <body ng-controller="AccountController">
 <div class="container-fluid">
 	<h1>Ma super banque</h1>
 	<div class="shadow p-3 mb-5 bg-white rounded">
 		<h2>Liste des comptes</h2>
-		<table>
+		<table class="paleBlueRows">
 			<thead>
 			<tr>
 				<th>Identifiant de compte</th>
 				<th>Montant</th>
-				<th>Découvert autorisé</th>
-				<th>Découvert maximum</th>
 			</tr>
 			</thead>
 
@@ -27,8 +27,6 @@
 			<tr ng-repeat="account in accounts">
 				<td>{{account.account_id}}</td>
 				<td>{{account.balance}}</td>
-				<td>{{account.overdraft}}</td>
-				<td>{{account.max_overdraft}}</td>
 			</tr>
 			</tbody>
 		</table>
