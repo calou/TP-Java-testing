@@ -72,8 +72,13 @@
 				</div>
 				<div class="form-group col-sm">
 					<label>Catégorie</label>
-					<input type="text" name="debitor" value="" class="form-control"
-					       ng-model="createTransactionRequest.category"/>
+					<select type="text" name="debitor" value="" class="form-control"
+					       ng-model="createTransactionRequest.category">
+						<option value="SALARY" selected>Salaire</option>
+						<option value="MORTGAGE">Prêt</option>
+						<option value="LOAN">Remboursement d'un emprunt</option>
+						<option value="WITHDRAWAL">Retrait</option>
+					</select>
 				</div>
 				<div class="form-group col-sm">
 					<label>Montant</label>
