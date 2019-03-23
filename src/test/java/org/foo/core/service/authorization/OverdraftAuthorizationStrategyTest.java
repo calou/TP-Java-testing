@@ -21,7 +21,7 @@ public class OverdraftAuthorizationStrategyTest {
 	public void setUp() throws Exception {
 		strategy = new OverdraftAuthorizationStrategy();
 		account = new Account();
-		account.setAmount(10);
+		account.setBalance(10);
 		account.setOverdraft(-5);
 		account.setMaxOverdraft(-10);
 	}

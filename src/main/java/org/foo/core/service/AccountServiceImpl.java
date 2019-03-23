@@ -31,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
 		}
 		Account account = new Account();
 		account.setAccountId(accountId);
-		account.setAmount(amount);
+		account.setBalance(amount);
 		account.setOverdraft(-200);
 		account.setMaxOverdraft(-1000);
 		accountRepository.save(account);
@@ -48,13 +48,13 @@ public class AccountServiceImpl implements AccountService {
 
 	public void credit(String accountNumber, double amount) throws AccountNotFoundException {
 		Account account = findByAccountNumber(accountNumber);
-		account.setAmount(account.getAmount() + amount);
+		account.setBalance(account.getBalance() + amount);
 		accountRepository.save(account);
 	}
 
 	public void debit(String accountNumber, double amount) throws AccountNotFoundException {
 		Account account = findByAccountNumber(accountNumber);
-		account.setAmount(account.getAmount() - amount);
+		account.setBalance(account.getBalance() - amount);
 		accountRepository.save(account);
 	}
 }

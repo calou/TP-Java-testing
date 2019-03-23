@@ -21,7 +21,7 @@ public class SolvableAuthorizationStrategyTest {
 	public void setUp() throws Exception {
 		strategy = new SolvableAuthorizationStrategy();
 		account = new Account();
-		account.setAmount(10);
+		account.setBalance(10);
 		account.setOverdraft(-5);
 	}
 

@@ -17,7 +17,7 @@ public class AboveMaxOverdraftAuthorizationStrategy implements AuthorizationStra
 
 	@Override
 	public boolean accept(Account account, double amount) {
-		double updatedBalance = account.getAmount() - amount;
+		double updatedBalance = account.getBalance() - amount;
 		return  updatedBalance < account.getMaxOverdraft();
 	}
 

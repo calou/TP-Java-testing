@@ -1,5 +1,7 @@
 package org.foo.core.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,15 +15,17 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
 	@Id
+	@JsonProperty("account_id")
 	private String accountId;
 
-	@Column(name = "amount")
-	private double amount;
+	@Column(name = "balance")
+	private double balance;
 
 	@Column(name = "overdraft")
 	private double overdraft;
 
 	@Column(name = "max_overdraft")
+	@JsonProperty("max_overdraft")
 	private double maxOverdraft;
 
 	public String getAccountId() {
@@ -32,12 +36,12 @@ public class Account implements Serializable {
 		this.accountId = accountId;
 	}
 
-	public double getAmount() {
-		return amount;
+	public double getBalance() {
+		return balance;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
 
 	public double getOverdraft() {
