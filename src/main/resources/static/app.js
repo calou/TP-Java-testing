@@ -15,12 +15,12 @@ bankApp.controller('AccountController', function AccountController($scope, Accou
   $scope.accounts = Account.query();
   $scope.createAccountRequest = {
     "account_id": "",
-    "amount": 0
+    "balance": 0
   }
-  $scope.create = function(account_id, amount) {
+  $scope.create = function(account_id, balance) {
     var account = new Account();
     account.account_id = account_id;
-    account.amount = amount;
+    account.balance = balance;
     savePromise = account.$save(function(account, putResponseHeaders) {
         $scope.accounts = Account.query();
     });
