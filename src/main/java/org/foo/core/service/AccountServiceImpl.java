@@ -32,7 +32,8 @@ public class AccountServiceImpl implements AccountService {
 		Account account = new Account();
 		account.setAccountId(accountId);
 		account.setAmount(amount);
-		account.setOverdraft(200);
+		account.setOverdraft(-200);
+		account.setMaxOverdraft(-1000);
 		accountRepository.save(account);
 	}
 

@@ -1,5 +1,8 @@
 package org.foo.core.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -13,25 +16,29 @@ import java.util.Date;
 @Table(name="transactions")
 public class Transaction implements Serializable {
 
+	@JsonIgnore
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@JsonProperty("creditor")
 	@Column(name = "creditor_account_id", nullable = false)
 	private String creditorAccountId;
 
+	@JsonProperty("debitor")
 	@Column(name = "debitor_account_id", nullable = false)
 	private String debitorAccountId;
 
-	@Column(name="date")
-	@Temporal(TemporalType.DATE)
-	private Date date;
 
 	@Column(name="category", nullable = false)
 	private TransactionCategory category;
 
 	@Column(name = "amount", nullable = false)
 	private double amount;
+
+	@Column(name="date")
+	@Temporal(TemporalType.DATE)
+	private Date date;
 
 	public Transaction() {
 	}

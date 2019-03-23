@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 
 /**
  * Service that process transaction
@@ -40,6 +41,7 @@ public class TransactionServiceImpl implements TransactionService {
 		if(authorization == Authorization.AUTHORIZED || authorization == Authorization.OVERDRAFT){
 			accountService.debit(debitorId, amount);
 			accountService.credit(transaction.getCreditorAccountId(), amount);
+			transaction.setDate(new Date());
 			transactionRepository.save(transaction);
 		}
 		return transactionStatus;
