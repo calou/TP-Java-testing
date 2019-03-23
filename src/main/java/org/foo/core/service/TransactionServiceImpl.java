@@ -5,6 +5,7 @@ import org.foo.core.model.Authorization;
 import org.foo.core.model.Transaction;
 import org.foo.core.model.TransactionStatus;
 import org.foo.core.repository.TransactionRepository;
+import org.foo.core.service.authorization.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +37,7 @@ public class TransactionServiceImpl implements TransactionService {
 		Authorization authorization = authorizationService.check(debitorId, amount);
 		TransactionStatus transactionStatus = new TransactionStatus();
 		transactionStatus.setAuthorization(authorization);
-
-		if(authorization == Authorization.AUTHORIZED){
+		if(authorization == Authorization.AUTHORIZED || authorization == Authorization.OVERDRAFT){
 			accountService.debit(debitorId, amount);
 			accountService.credit(transaction.getCreditorAccountId(), amount);
 			transactionRepository.save(transaction);

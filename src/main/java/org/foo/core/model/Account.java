@@ -21,6 +21,9 @@ public class Account implements Serializable {
 	@Column(name = "overdraft")
 	private double overdraft;
 
+	@Column(name = "max_overdraft")
+	private double maxOverdraft;
+
 	public String getAccountId() {
 		return accountId;
 	}
@@ -43,5 +46,13 @@ public class Account implements Serializable {
 
 	public void setOverdraft(double overdraft) {
 		this.overdraft = overdraft;
+	}
+
+	public double getMaxOverdraft() {
+		return maxOverdraft;
+	}
+
+	public void setMaxOverdraft(double maxOverdraft) {
+		this.maxOverdraft = maxOverdraft;
 	}
 }

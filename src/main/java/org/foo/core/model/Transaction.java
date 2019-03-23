@@ -1,6 +1,7 @@
 package org.foo.core.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,27 +11,38 @@ import java.util.Date;
  */
 @Entity
 @Table(name="transactions")
-public class Transaction {
+public class Transaction implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@Column(name = "creditor_account_id")
+	@Column(name = "creditor_account_id", nullable = false)
 	private String creditorAccountId;
 
-	@Column(name = "debitor_account_id")
+	@Column(name = "debitor_account_id", nullable = false)
 	private String debitorAccountId;
-
-	@Column(name = "amount")
-	private double amount;
 
 	@Column(name="date")
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
-	@Column(name="category")
+	@Column(name="category", nullable = false)
 	private TransactionCategory category;
+
+	@Column(name = "amount", nullable = false)
+	private double amount;
+
+	public Transaction() {
+	}
+
+	public Transaction(String creditorAccountId, String debitorAccountId, Date date, TransactionCategory category, double amount) {
+		this.creditorAccountId = creditorAccountId;
+		this.debitorAccountId = debitorAccountId;
+		this.date = date;
+		this.category = category;
+		this.amount = amount;
+	}
 
 	public Long getId() {
 		return id;

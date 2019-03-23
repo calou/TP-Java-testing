@@ -1,5 +1,6 @@
-package org.foo.core.service;
+package org.foo.core.service.authorization;
 
+import org.foo.core.exception.AccountNotFoundException;
 import org.foo.core.model.Authorization;
 
 /**
@@ -9,6 +10,6 @@ import org.foo.core.model.Authorization;
  */
 public interface AuthorizationService {
 
-	Authorization check(String accountNumber, double amount);
+	Authorization check(String accountNumber, double amount) throws AccountNotFoundException;
 
 }

@@ -1,5 +1,6 @@
 package org.foo.core.service;
 
+import org.foo.core.exception.AccountIdAlreadyExistsException;
 import org.foo.core.exception.AccountNotFoundException;
 import org.foo.core.model.Account;
 import org.foo.core.repository.AccountRepository;
@@ -20,6 +21,19 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
+	}
+
+	@Override
+	public void createAccount(String accountId, double amount) throws AccountIdAlreadyExistsException {
+		Optional<Account> existingAccount = accountRepository.findById(accountId);
+		if(existingAccount.isPresent()){
+			throw new AccountIdAlreadyExistsException();
+		}
+		Account account = new Account();
+		account.setAccountId(accountId);
+		account.setAmount(amount);
+		account.setOverdraft(200);
+		accountRepository.save(account);
 	}
 
 	public Account findByAccountNumber(String accountNumber) throws AccountNotFoundException {

@@ -1,11 +1,13 @@
 package org.foo.core.model;
 
+import java.io.Serializable;
+
 /**
  * Todo
  *
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
-public class TransactionStatus {
+public class TransactionStatus implements Serializable {
 	private Authorization authorization;
 
 	public Authorization getAuthorization() {

@@ -1,5 +1,6 @@
 package org.foo.core.service;
 
+import org.foo.core.exception.AccountIdAlreadyExistsException;
 import org.foo.core.exception.AccountNotFoundException;
 import org.foo.core.model.Account;
 
@@ -9,6 +10,8 @@ import org.foo.core.model.Account;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 public interface AccountService {
+
+	void createAccount(String accountNumber, double amount) throws AccountIdAlreadyExistsException;
 
 	Account findByAccountNumber(String accountNumber) throws AccountNotFoundException;
 

@@ -6,5 +6,5 @@ package org.foo.core.model;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 public enum Authorization {
-	AUTHORIZED, NOT_ENOUGH_FUND, WEEKLY_TRESHOLD_REACHED, MONTHLY_TRESHOLD_REACHED, ACCOUNT_NOT_FOUND;
+	AUTHORIZED, OVERDRAFT, NOT_ENOUGH_FUND, WEEKLY_TRESHOLD_REACHED, MONTHLY_TRESHOLD_REACHED, ACCOUNT_NOT_FOUND;
 }
