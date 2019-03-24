@@ -1,5 +1,4 @@
-package com.digimind.services.concept.extractor
-
+package org.foo.bank
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
@@ -7,12 +6,18 @@ import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
 class BankSimulation extends Simulation {
-  val accountCount = 0
-  val httpProtocol = http.baseUrl("http://localhost:18888").header("Content-type", "application/json")
+  var accountCount = 0
+  val httpProtocol = http.baseUrl("http://localhost:18080").header("Content-type", "application/json")
 
   val createAccountTemplate = "{\"account_id\":\"XXXXXXXXX\",\"balance\":10}"
 
-  var randomCreateAccountJson = Iterator.continually(Map("json" -> (createAccountTemplate.replace("XXXXXXXXX", accountCount++))))
+  object Counter {
+    def increment() = {
+      accountCount = accountCount + 1
+      "" + accountCount
+    }
+  }
+  var randomCreateAccountJson = Iterator.continually(Map("json" -> (createAccountTemplate.replace("XXXXXXXXX", Counter.increment()))))
 
   val scn = scenario("CreateAccount")
     .feed(randomCreateAccountJson)
@@ -21,13 +26,11 @@ class BankSimulation extends Simulation {
       .body(StringBody("""${json}"""))
       .check(status.is(200)))
     .pause(5)
-    /*
     .exec(http("List")
       .get("/account")
-      .body(StringBody("""${json}"""))
       .check(status.is(200)))
     .pause(5)
-*/
+
   setUp(scn.inject(
     atOnceUsers(5),
     rampUsers(10) during (5 seconds),

@@ -8,7 +8,7 @@
     <artifactId>bank</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    
+
     <properties>
         <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
         <swagger-ui.version>2.9.2</swagger-ui.version>
@@ -208,7 +208,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <jvmArguments>-Dspring.profiles.active=test</jvmArguments>
-                            <jmxPort>9999</jmxPort>
+                            <jmxPort>19001</jmxPort>
                         </configuration>
                         <executions>
                             <execution>
@@ -228,7 +228,7 @@
                     <plugin>
                         <groupId>net.alchim31.maven</groupId>
                         <artifactId>scala-maven-plugin</artifactId>
-                        <version>3.4.4</version>
+                        <version>4.0.1</version>
                     </plugin>
                     <plugin>
                         <groupId>io.gatling</groupId>
