@@ -7,29 +7,49 @@ import scala.concurrent.duration._
 
 class BankSimulation extends Simulation {
   var accountCount = 0
+  var transactionCount = 0
+
   val httpProtocol = http.baseUrl("http://localhost:18080").header("Content-type", "application/json")
 
-  val createAccountTemplate = "{\"account_id\":\"XXXXXXXXX\",\"balance\":10}"
+  val createAccountTemplate = "{\"account_id\":\"XXXXXXXXX\",\"balance\":1000}"
+  val createTransactionTemplate = "{\"debitor\":\"1\", \"creditor\": \"XXXXXXXXX\",\"category\": \"SALARY\", \"amount\":1}"
 
-  object Counter {
+  object AccountCounter {
     def increment() = {
       accountCount = accountCount + 1
       "" + accountCount
     }
   }
-  var randomCreateAccountJson = Iterator.continually(Map("json" -> (createAccountTemplate.replace("XXXXXXXXX", Counter.increment()))))
 
-  val scn = scenario("CreateAccount")
+  object TransactionCounter {
+    def increment() = {
+      transactionCount = transactionCount + 1
+      "" + transactionCount
+    }
+  }
+
+  var randomCreateAccountJson = Iterator.continually(
+    Map(
+      "accountJson" -> (createAccountTemplate.replace("XXXXXXXXX", AccountCounter.increment())),
+      "transactionJson" -> (createTransactionTemplate.replace("XXXXXXXXX", TransactionCounter.increment()))
+    )
+  )
+  val scn = scenario("Bank")
     .feed(randomCreateAccountJson)
-    .exec(http("Create")
+    .exec(http("CreateAccount")
       .put("/account")
-      .body(StringBody("""${json}"""))
+      .body(StringBody("""${accountJson}"""))
       .check(status.is(200)))
-    .pause(5)
-    .exec(http("List")
+    .pause(1)
+    .exec(http("ListAccounts")
       .get("/account")
       .check(status.is(200)))
-    .pause(5)
+    .pause(1)
+    .exec(http("CreateTransaction")
+      .put("/transaction")
+      .body(StringBody("""${transactionJson}"""))
+      .check(status.is(200)))
+
 
   setUp(scn.inject(
     atOnceUsers(5),

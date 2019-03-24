@@ -18,7 +18,6 @@ import java.util.Date;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 @Service
-@Transactional
 public class TransactionServiceImpl implements TransactionService {
 	private AccountService accountService;
 	private AuthorizationService authorizationService;
@@ -32,6 +31,7 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
+	@Transactional
 	public TransactionStatus process(Transaction transaction) throws AccountNotFoundException {
 		String debitorId = transaction.getDebitorAccountId();
 		double amount = transaction.getAmount();

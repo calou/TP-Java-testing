@@ -7,6 +7,7 @@ import org.foo.core.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 /**
@@ -24,6 +25,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional(Transactional.TxType.REQUIRED)
 	public void createAccount(String accountId, double amount) throws AccountIdAlreadyExistsException {
 		Optional<Account> existingAccount = accountRepository.findById(accountId);
 		if(existingAccount.isPresent()){
@@ -46,12 +48,14 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
+	@Transactional(Transactional.TxType.REQUIRED)
 	public void credit(String accountNumber, double amount) throws AccountNotFoundException {
 		Account account = findByAccountNumber(accountNumber);
 		account.setBalance(account.getBalance() + amount);
 		accountRepository.save(account);
 	}
 
+	@Transactional(Transactional.TxType.REQUIRED)
 	public void debit(String accountNumber, double amount) throws AccountNotFoundException {
 		Account account = findByAccountNumber(accountNumber);
 		account.setBalance(account.getBalance() - amount);
