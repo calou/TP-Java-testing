@@ -40,7 +40,6 @@ class BankSimulation extends Simulation {
       .put("/account")
       .body(StringBody("""${accountJson}"""))
       .check(status.is(200)))
-    .pause(1)
     .exec(http("ListAccounts")
       .get("/account")
       .check(status.is(200)))
@@ -55,7 +54,7 @@ class BankSimulation extends Simulation {
     atOnceUsers(5),
     rampUsers(10) during (5 seconds),
     constantUsersPerSec(20) during (15 seconds),
-    rampUsers(30) during (5 seconds),
+    rampUsers(60) during (5 seconds),
     constantUsersPerSec(20) during (15 seconds) randomized
   ).protocols(httpProtocol))
 }
