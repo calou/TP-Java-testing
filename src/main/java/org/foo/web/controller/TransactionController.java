@@ -30,7 +30,7 @@ public class TransactionController {
 		this.transactionRepository = transactionRepository;
 	}
 
-	@PutMapping(value = "", produces = "application/json")
+	@PutMapping(produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<TransactionStatus> create(@RequestBody Transaction transaction) throws AccountNotFoundException {
 		TransactionStatus transactionStatus = transactionService.process(transaction);

@@ -32,3 +32,4 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
+  cache.ehcache.config: classpath:cache.xml

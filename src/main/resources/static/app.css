@@ -9,7 +9,7 @@ table.paleBlueRows td, table.paleBlueRows th {
   padding: 3px 2px;
 }
 table.paleBlueRows tbody td {
-  font-size: 13px;
+  font-size: 17px;
 }
 table.paleBlueRows tr:nth-child(even) {
   background: #D0E4F5;
