@@ -1,0 +1,11 @@
+<ehcache>
+    <cache name="concepts"
+           maxBytesLocalHeap="128M"
+           maxBytesLocalDisk="512M">
+    </cache>
+    <cache name="interests"
+           maxBytesLocalHeap="128M"
+           maxBytesLocalDisk="512M">
+    </cache>
+</ehcache>
+
