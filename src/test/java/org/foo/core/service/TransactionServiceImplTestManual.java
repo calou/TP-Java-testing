@@ -4,12 +4,13 @@ import org.foo.core.exception.AccountNotFoundException;
 import org.foo.core.model.Account;
 import org.foo.core.model.Transaction;
 import org.foo.core.model.TransactionCategory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,8 +22,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Profile("test")
+@ActiveProfiles("test")
 @DirtiesContext
+@Ignore
 public class TransactionServiceImplTestManual {
 
 	@Autowired

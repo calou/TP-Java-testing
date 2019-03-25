@@ -6,6 +6,7 @@ import org.foo.core.model.TransactionStatus;
 import org.foo.core.repository.TransactionRepository;
 import org.foo.core.service.TransactionService;
 import org.foo.web.model.AccountTransactions;
+import org.foo.web.service.AccountTransactionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,12 @@ import java.util.List;
 @RequestMapping("transaction")
 public class TransactionController {
 	private TransactionService transactionService;
-	private TransactionRepository transactionRepository;
+	private AccountTransactionsService accountTransactionsService;
 
 	@Autowired
-	public TransactionController(TransactionService transactionService, TransactionRepository transactionRepository) {
+	public TransactionController(TransactionService transactionService, AccountTransactionsService accountTransactionsService) {
 		this.transactionService = transactionService;
-		this.transactionRepository = transactionRepository;
+		this.accountTransactionsService = accountTransactionsService;
 	}
 
 	@PutMapping(produces = "application/json")
@@ -46,12 +47,10 @@ public class TransactionController {
 		}
 	}
 
-	@GetMapping(value = "/{account_number}", produces = "application/json")
+	@GetMapping(value = "/{account_id}", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<AccountTransactions> findByAccountId(@RequestParam("account_id") String accountId) {
-		List<Transaction> creditingTransactions = transactionRepository.findAllByCreditorAccountId(accountId);
-		List<Transaction> debitingTransactions = transactionRepository.findAllByDebitorAccountId(accountId);
-		return ResponseEntity.ok(new AccountTransactions(creditingTransactions, debitingTransactions));
+	public ResponseEntity<AccountTransactions> findByAccountId(@PathVariable("account_id") String accountId) {
+		return ResponseEntity.ok(accountTransactionsService.findByAccountId(accountId));
 	}
 
 	@ExceptionHandler(AccountNotFoundException.class)

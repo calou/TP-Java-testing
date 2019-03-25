@@ -1,5 +1,6 @@
 package org.foo.web.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.foo.core.model.Transaction;
 
 import java.io.Serializable;
@@ -12,7 +13,10 @@ import java.util.List;
  */
 public class AccountTransactions implements Serializable {
 
+	@JsonProperty("crediting")
 	private List<Transaction> creditingTransactions;
+
+	@JsonProperty("debiting")
 	private List<Transaction> debitingTransactions;
 
 	public AccountTransactions(List<Transaction> creditingTransactions, List<Transaction> debitingTransactions) {
