@@ -28,6 +28,14 @@ public class Account implements Serializable {
 	@JsonProperty("max_overdraft")
 	private double maxOverdraft;
 
+	@Column(name = "weekly_authorized_amount")
+	@JsonProperty("weekly_authorized_amount")
+	private int weeklyAuthorizedAmount;
+
+	@Column(name = "monthly_authorized_amount")
+	@JsonProperty("monthly_authorized_amount")
+	private int monthlyAuthorizedAmount;
+
 	public String getAccountId() {
 		return accountId;
 	}
@@ -58,5 +66,21 @@ public class Account implements Serializable {
 
 	public void setMaxOverdraft(double maxOverdraft) {
 		this.maxOverdraft = maxOverdraft;
+	}
+
+	public int getWeeklyAuthorizedAmount() {
+		return weeklyAuthorizedAmount;
+	}
+
+	public void setWeeklyAuthorizedAmount(int weeklyAuthorizedAmount) {
+		this.weeklyAuthorizedAmount = weeklyAuthorizedAmount;
+	}
+
+	public int getMonthlyAuthorizedAmount() {
+		return monthlyAuthorizedAmount;
+	}
+
+	public void setMonthlyAuthorizedAmount(int monthlyAuthorizedAmount) {
+		this.monthlyAuthorizedAmount = monthlyAuthorizedAmount;
 	}
 }

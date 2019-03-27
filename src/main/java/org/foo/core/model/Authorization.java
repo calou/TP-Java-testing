@@ -6,5 +6,15 @@ package org.foo.core.model;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 public enum Authorization {
-	AUTHORIZED, OVERDRAFT, NOT_ENOUGH_FUND, WEEKLY_TRESHOLD_REACHED, MONTHLY_TRESHOLD_REACHED, ACCOUNT_NOT_FOUND;
-}
+	AUTHORIZED(false), OVERDRAFT(false), NOT_ENOUGH_FUND(true),
+	WEEKLY_TRESHOLD_REACHED(true), MONTHLY_TRESHOLD_REACHED(true), ACCOUNT_NOT_FOUND(true);
+
+	private boolean blocking;
+
+	Authorization(boolean blocking) {
+		this.blocking = blocking;
+	}
+
+	public boolean isBlocking() {
+		return blocking;
+	}}

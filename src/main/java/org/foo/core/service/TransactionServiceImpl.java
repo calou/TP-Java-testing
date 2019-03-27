@@ -38,7 +38,7 @@ public class TransactionServiceImpl implements TransactionService {
 		Authorization authorization = authorizationService.check(debitorId, amount);
 		TransactionStatus transactionStatus = new TransactionStatus();
 		transactionStatus.setAuthorization(authorization);
-		if(authorization == Authorization.AUTHORIZED || authorization == Authorization.OVERDRAFT){
+		if(!authorization.isBlocking()){
 			accountService.debit(debitorId, amount);
 			accountService.credit(transaction.getCreditorAccountId(), amount);
 			transaction.setDate(new Date());
