@@ -2,12 +2,8 @@ package org.foo;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -20,10 +16,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 @Configuration
-@EnableJpaRepositories
+@ComponentScan("org.foo.web")
 @EnableSwagger2
 @EnableCaching
-public class BankConfiguration  {
+public class BankWebConfiguration {
 
 	@Bean
 	public Docket apiDocket() {

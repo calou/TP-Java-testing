@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 @Component
-@Order(1)
+@Order(4)
 public class OverdraftAuthorizationStrategy implements AuthorizationStrategy {
 
 	@Override

@@ -33,3 +33,4 @@ spring:
       ddl-auto: create-drop
 
   cache.ehcache.config: classpath:cache.xml
+  main.banner-mode: "off"

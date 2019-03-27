@@ -1,6 +1,7 @@
 package org.foo.core.repository;
 
 import org.apache.commons.lang3.time.DateUtils;
+import org.foo.BankCoreConfiguration;
 import org.foo.core.model.Transaction;
 import org.foo.core.model.TransactionCategory;
 import org.junit.Before;
@@ -22,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {BankCoreConfiguration.class})
 @ActiveProfiles("test")
 @DirtiesContext
 public class TransactionRepositoryTest {
@@ -44,7 +45,6 @@ public class TransactionRepositoryTest {
 		storeTransaction(DateUtils.addHours(now, -30), "a", 50);
 		storeTransaction(DateUtils.addDays(now, -6), "a", 300);
 		storeTransaction(DateUtils.addDays(now, -10), "a", 600);
-
 
 		assertThat(transactionRepository.getSpentAmountFromDate("a", DateUtils.addDays(now, -2))).isEqualTo(150);
 		assertThat(transactionRepository.getSpentAmountFromDate("a", DateUtils.addDays(now, -7))).isEqualTo(450);

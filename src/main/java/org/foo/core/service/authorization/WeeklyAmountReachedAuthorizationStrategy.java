@@ -16,7 +16,7 @@ import java.util.Date;
  * @author <a href="mailto:sebastien.gruchet@digimind.com">Sébastien Gruchet</a>
  */
 @Component
-@Order(5)
+@Order(2)
 public class WeeklyAmountReachedAuthorizationStrategy implements AuthorizationStrategy {
 
 	private TransactionRepository transactionRepository;
@@ -30,7 +30,10 @@ public class WeeklyAmountReachedAuthorizationStrategy implements AuthorizationSt
 	public boolean accept(Account account, double amount) {
 		Date sevenDaysAgo = DateUtils.addDays(new Date(), -7);
 		Integer weeklySpent = transactionRepository.getSpentAmountFromDate(account.getAccountId(), sevenDaysAgo);
-		return account.getWeeklyAuthorizedAmount() < weeklySpent;
+		if(weeklySpent == null){
+			weeklySpent = 0;
+		}
+		return account.getWeeklyAuthorizedAmount() < weeklySpent + amount;
 	}
 
 	@Override
