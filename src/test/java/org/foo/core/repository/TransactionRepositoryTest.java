@@ -1,7 +1,7 @@
 package org.foo.core.repository;
 
 import org.apache.commons.lang3.time.DateUtils;
-import org.foo.BankCoreConfiguration;
+import org.foo.core.BankCoreConfiguration;
 import org.foo.core.model.Transaction;
 import org.foo.core.model.TransactionCategory;
 import org.junit.Before;
