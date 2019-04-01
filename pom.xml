@@ -256,9 +256,8 @@
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
-                            <jvmArguments>-Dspring.profiles.active=test</jvmArguments>
+                            <jvmArguments>-Dspring.profiles.active=test ${jvmArgs}</jvmArguments>
                             <jmxPort>19001</jmxPort>
-                            <jvmArguments>${jvmArgs}</jvmArguments>
                         </configuration>
                         <executions>
                             <execution>
